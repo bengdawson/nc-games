@@ -21,3 +21,17 @@ export const fetchComments = (reviewID) => {
     return response.data.comments;
   });
 };
+
+export const fetchCategories = () => {
+  return myApi.get("/categories").then((response) => {
+    return response.data.categories;
+  });
+};
+
+export const fetchReviewsByCat = (category) => {
+  console.log(category);
+  return myApi.get(`/reviews?category=${category}`).then((response) => {
+    console.log(response, "FETCHBYCAT");
+    return response.data.reviews;
+  });
+};

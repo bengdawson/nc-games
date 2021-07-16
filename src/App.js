@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Homepage from "./components/Homepage";
 import Reviews from "./components/Reviews";
 import ReviewByID from "./components/ReviewByID";
+import ReviewsByCat from "./components/ReviewsByCat";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route exact path="/reviews/:reviewID">
             <ReviewByID />
+          </Route>
+          <Route exact path="/reviews/categories/:category">
+            <ReviewsByCat />
           </Route>
         </Switch>
       </div>

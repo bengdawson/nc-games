@@ -1,18 +1,21 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
-import { fetchAllReviews } from "../utils/apiUtils";
+import { useState, useEffect } from "react";
+import { fetchReviewsByCat } from "../utils/apiUtils";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router";
 import Categories from "./Categories";
 
-const Reviews = () => {
+const ReviewsByCat = () => {
   const [reviews, setReviews] = useState([]);
+  const { category } = useParams();
+  console.log(category);
 
   useEffect(() => {
-    fetchAllReviews().then((reviewsFromApi) => {
-      console.log(reviewsFromApi);
+    fetchReviewsByCat(category).then((reviewsFromApi) => {
+      console.log(reviewsFromApi, "REVIEWSFROMAPI");
       setReviews(reviewsFromApi);
     });
-  }, []);
+  }, [category]);
 
   return (
     <ul>
@@ -47,4 +50,4 @@ const Reviews = () => {
   );
 };
 
-export default Reviews;
+export default ReviewsByCat;
