@@ -5,6 +5,8 @@ import { useParams } from "react-router";
 import Expand from "./Expand";
 import moment from "moment";
 
+moment.locale("en-gb");
+
 const ReviewByID = () => {
   const [review, setReview] = useState([]);
   const [comments, setComments] = useState([]);
@@ -29,14 +31,14 @@ const ReviewByID = () => {
       <p>Review by: {review.owner}</p>
       <img src={review.review_img_url} alt={review.owner}></img>
       <Expand>
-        <p>Hello</p>
-        <ul classname="SingleReview__commentList">
+        <h1>Comments</h1>
+        <ul className="SingleReview__commentList">
           {comments.map(({ author, body, comment_id, created_at, votes }) => {
             return (
               <li key={comment_id}>
                 <h2>
-                  {author} posted at {created_at}
-                  {console.log(moment(created_at))}
+                  {author} posted on {moment(created_at).format("d MMMM YYYY")}{" "}
+                  at {moment(created_at).format("HH:mm")}
                 </h2>
                 <p>{body}</p>
               </li>
